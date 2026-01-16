@@ -121,4 +121,5 @@ total_sum = sum(int(num) for num in number_list)
 result = str(total_sum)[:10]
 
 print(f"The total sum has {len(str(total_sum))} digits.")
+print(f"The total sum is: {total_sum}")
 print(f"The first 10 digits are: {result}")
