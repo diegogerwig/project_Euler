@@ -28,7 +28,7 @@ def solve_factorial_digit_sum():
     # Iterate through each character 'd', convert it back to int, and sum them.
     digit_sum = sum(int(d) for d in number_str)
     
-    print(f"The calculated factorial starts with: {number_str[:10]}...")
+    print(f"The calculated factorial: {number_str}")
     print(f"The total number of digits is: {len(number_str)}")
     print("-" * 30)
     print(f"The sum of the digits is: {digit_sum}")
