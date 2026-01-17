@@ -15,8 +15,8 @@ Find the maximum total from top to bottom of the triangle provided.
 """
 
 def solve_maximum_path_sum():
-    # 1. The Input Data
-    triangle_data = """
+    # 1. The Raw Data (String)
+    raw_data = """
     75
     95 64
     17 47 82
@@ -34,32 +34,57 @@ def solve_maximum_path_sum():
     04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
     """
 
-    # 2. Parse the data into a list of lists of integers
-    # strip() removes empty start/end lines, splitlines() creates rows
-    # Then we map each number in the row to an integer
-    triangle = [list(map(int, line.split())) for line in triangle_data.strip().splitlines()]
+    # 2. Convert the text into a clean List of Lists
+    # We create an empty list called 'triangle'
+    triangle = []
+    
+    # Split the raw text into lines
+    lines = raw_data.strip().splitlines()
 
-    # 3. Algorithm: Bottom-Up Dynamic Programming
-    # We start from the second to last row and move upwards to the top (row 0).
-    # range(start, stop, step): start at len-2, stop at -1 (exclusive, so 0), step -1
-    for i in range(len(triangle) - 2, -1, -1):
+    for line in lines:
+        # Split each line by spaces (e.g., "95 64" becomes ["95", "64"])
+        string_numbers = line.split()
         
-        # Iterate through every number in the current row
-        for j in range(len(triangle[i])):
-            
-            # Compare the two numbers directly below the current number (triangle[i][j]):
-            # The one directly below is at [i+1][j]
-            # The one below and to the right is at [i+1][j+1]
-            left_child = triangle[i+1][j]
-            right_child = triangle[i+1][j+1]
-            
-            # Add the maximum of the two children to the current number
-            triangle[i][j] += max(left_child, right_child)
+        # Convert each string number to an Integer
+        row_numbers = []
+        for s in string_numbers:
+            row_numbers.append(int(s))
+        
+        # Add this row to our triangle
+        triangle.append(row_numbers)
 
-    # After the loop finishes, the top element contains the maximum sum
-    max_total = triangle[0][0]
 
-    print(f"The maximum path sum is: {max_total}")
+    # 3. The Logic (Bottom-Up)
+    # We want to start at the SECOND to last row and move UP to row 0.
+    total_rows = len(triangle)
+    
+    # Range parameters: start, stop, step
+    # start: total_rows - 2 (the second to last row)
+    # stop: -1 (so it includes row 0)
+    # step: -1 (go backwards)
+    for row_index in range(total_rows - 2, -1, -1):
+        
+        current_row = triangle[row_index]
+        row_below = triangle[row_index + 1]
+        
+        # Loop through each number in the current row
+        for i in range(len(current_row)):
+            
+            # Identify the two possible numbers below this position
+            left_number_below = row_below[i]
+            right_number_below = row_below[i+1]
+            
+            # Which one is bigger?
+            if left_number_below > right_number_below:
+                biggest_child = left_number_below
+            else:
+                biggest_child = right_number_below
+            
+            # Add the biggest number to the current position
+            current_row[i] = current_row[i] + biggest_child
+
+    # After the loop finishes, the very top number (row 0, item 0) holds the max sum
+    print("The maximum path sum is:", triangle[0][0])
 
 if __name__ == "__main__":
     solve_maximum_path_sum()
