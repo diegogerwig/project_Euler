@@ -30,7 +30,6 @@ def solve_factorial_digit_sum():
     
     print(f"The calculated factorial: {number_str}")
     print(f"The total number of digits is: {len(number_str)}")
-    print("-" * 30)
     print(f"The sum of the digits is: {digit_sum}")
 
 if __name__ == "__main__":
