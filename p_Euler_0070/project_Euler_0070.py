@@ -65,7 +65,6 @@ def solve_totient_permutation():
                     # Optional debug
                     # print(f"New best: n={n} (p1={p1}, p2={p2}), ratio={ratio:.6f}")
 
-    print("-" * 30)
     print(f"Value of n producing minimum ratio: {result_n}")
 
 if __name__ == "__main__":
