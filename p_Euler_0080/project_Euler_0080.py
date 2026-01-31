@@ -43,7 +43,6 @@ def solve_square_root_digital_expansion():
             print(f"sqrt(2) digits: {digits}")
             print(f"Sum: {current_sum}")
 
-    print("-" * 30)
     print(f"Total of the digital sums: {total_digital_sum}")
 
 if __name__ == "__main__":
