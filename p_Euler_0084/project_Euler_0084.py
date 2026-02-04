@@ -126,7 +126,6 @@ def solve_monopoly_odds():
         
     # Format modal string
     modal_string = "".join(f"{sq_id:02d}" for _, sq_id in top3)
-    print("-" * 30)
     print(f"Modal String: {modal_string}")
 
 if __name__ == "__main__":
